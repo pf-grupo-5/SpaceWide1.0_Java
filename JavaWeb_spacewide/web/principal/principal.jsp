@@ -20,6 +20,8 @@
  
       <h1 class="logo">Space<span>Wide</span></h1>
       <ul>
+           <li><a href="principal.jsp">Menu principal<i class="fas fa-caret-down"></i></a>
+               
         <li><a href="#">Obra_artística<i class="fas fa-caret-down"></i></a>
 
             <div class="dropdown-menu">

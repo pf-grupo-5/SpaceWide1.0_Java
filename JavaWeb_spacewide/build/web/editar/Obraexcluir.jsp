@@ -1,9 +1,8 @@
-<%@ page import="dao.Dao, dao.ArtistaDao"%>
-<jsp:useBean id="u" class="classes.Artista"></jsp:useBean>
+<%@ page import="dao.Dao, dao.Obra_ArtisticaDao"%>
+<jsp:useBean id="u" class="classes.Obra_artistica"></jsp:useBean>
 <jsp:setProperty property="*" name="u"/>
 
-
-	<%
+<%
 	//Lê dados da sessão
 	String acesso = (String) request.getSession().getAttribute("acesso");
 
@@ -12,15 +11,13 @@
 		response.sendRedirect("../index.jsp");
 	}
 	%>
-	
 	<%	
-		
-		int i = ArtistaDao.editarArtista(u);
+		int i =	Obra_ArtisticaDao.excluirObra(u);
 		
 		if(i > 0) {
-			response.sendRedirect("../artistacontrolar.jsp?pag=1");
+			response.sendRedirect("../obrartisticacontrolar.jsp?pag=1");
 			
 		}else{
-			response.sendRedirect("../artistaeditar-erro.jsp");
+			response.sendRedirect("../obrartisticacontrolar-erro.jsp?");
 		}
 	%>

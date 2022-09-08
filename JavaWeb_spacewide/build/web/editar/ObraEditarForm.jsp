@@ -1,4 +1,5 @@
-<%@ page import="dao.Dao, dao.ArtistaDao, classes.Artista, java.util.*"%>
+<%@ page import="dao.Dao, dao.Obra_ArtisticaDao, classes.Obra_artistica,classes.Artista, classes.Cliente, dao.ArtistaDao,
+ dao.ClienteDao, java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
@@ -32,36 +33,32 @@
 
 	<%
 	String id = request.getParameter("id");
+	Obra_artistica obra = Obra_ArtisticaDao.getObra_artisticaById(Integer.parseInt(id));
 	Artista ar = ArtistaDao.getArtistaById(Integer.parseInt(id));
+	Cliente cl = ClienteDao.getClienteById(Integer.parseInt(id));
 	%>
 
 	<div class="container">
 		<div class="row">
 			<h3>Editar Artista:</h3>
-			<form class="col s12" action="ArtistaEditar.jsp" method="post">
-				 <input type="hidden" name="id" value="<%=ar.getId()%>">
+			<form class="col s12" action="ObraEditar.jsp" method="post">
+				 <input type="hidden" name="id" value="<%=obra.getId()%>">
 				<div class="row">
 					<div class="input-field col s6">
 						
-						<input type="text" name="nome" value="<%=ar.getNome()%>"
+						<input type="text" name="nome" value="<%=obra.getTitulo()%>"
 							class="validate">
 					</div>
 					<div class="input-field col s6">
 						<input type="text" name="nome_artistico" class="validate"
-							value="<%=ar.getNome_artistico()%>">
+							value="<%=obra.getSubtitulo()%>">
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="input-field col s12">
-						<input type="email" name="email" class="validate"
-							value="<%=ar.getEmail()%>">
-					</div>
-					</div>
 				
 				<p>
 					<%
-					if (ar.getAcesso().equals("1")) {
+					if (ar.getAcesso().equals("1") || cl.getAcesso().equals("1")) {
 					%>
 					<label> <input name="acesso" type="radio" value="1"
 						checked="true" /><span>admin</span>
