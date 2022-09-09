@@ -51,7 +51,7 @@
 		}
 		%>
 
-		<h4>Lista de Artistas</h4>
+		<h4>Lista de Clientes</h4>
             <div class="divider"></div>
             <div class="section">
             <table class="responsive-table">
@@ -67,7 +67,7 @@
                     <td>${cliente.getData_de_criacao()}</td>
                     <td>${cliente.getData_da_ultima_modificacao()}
                     <td><a href="editar/Clientebloquear.jsp?id=${cliente.getId()}&estado=${cliente.getEstado()}"> <i class="material-icons middle">lock</i></a></td>
-                    <td><a href="editar/Clienteecluir.jsp?id=${cliente.getId()}" onclick="return confirm('Deseja deletar?');"><i class="material-icons middle ">delete</i></a></td>            
+                    <td><a href="editar/Clienteexcluir.jsp?id=${cliente.getId()}" onclick="return confirm('Deseja deletar?');"><i class="material-icons middle ">delete</i></a></td>            
                     <td><a href="editar/Editarcliente.jsp?id=${cliente.getId()}"> <i class="material-icons middle">edit</i></a></td>
                 </tr>	
                 </c:forEach>

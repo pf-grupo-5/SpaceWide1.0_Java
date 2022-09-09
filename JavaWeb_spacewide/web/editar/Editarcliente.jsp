@@ -77,9 +77,7 @@
 				<%
 				}
 				%>
-                                
-				<input class="btn waves-effect waves-light" class="grey darken-4" type="submit" value="Editar">
-                               
+                           <input class="btn waves-effect waves-light" type="submit" value="Editar">
 			</form>
 		</div>
 		</div>

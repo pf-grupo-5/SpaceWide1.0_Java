@@ -136,7 +136,7 @@ public class Obra_ArtisticaDao {
 
 	public static int bloquearObra(Obra_artistica obra) {
 		int status = 0;
-		String estadoobra = "";
+		String estadoobra;
 
 		if (obra.getEstado().equalsIgnoreCase("publicada")) {
 			estadoobra = "pendente";
