@@ -12,7 +12,7 @@
             <div class="dropdown-menu">
                 <ul>
                   <li><a href="obrartisticacontrolar.jsp?pag=1">Gerenciar Obras</a></li>
-                  <li><a href="obrarelatorio.jsp">Relatório das Obras</a></li>
+                  <li><a href="obrarelatorio.jsp">Relatório Obra</a></li>
                 </ul>
               </div>
          <li><a href="#">Cliente<i class="fas fa-caret-down"></i></a>
