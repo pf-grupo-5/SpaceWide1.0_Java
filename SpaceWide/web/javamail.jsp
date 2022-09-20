@@ -38,7 +38,7 @@ java.io.*, javax.servlet.*, javax.servlet.http.*" %>
             <tr>
                <td> <c:out value = "${row.idCliente}"/></td>
                <td> <c:out value = "${row.email}"/></td>
-               <td> Email enviado</td>
+               <td>Email enviado para os listados usuários</td>
             </tr>
          </c:forEach>
       </table>
@@ -48,13 +48,13 @@ java.io.*, javax.servlet.*, javax.servlet.http.*" %>
     
     Cliente cliente = null;   
          try{
-        Connection con = con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mail","root","");
+        Connection con = con=DriverManager.getConnection("jdbc:mysql://localhost:3306/site2023","root","");
         PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from cliente");
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {
     
-     final String fromEmail = "Testesw1305@gmail.com"; //requires valid gmail id
-		  final String password = "byhqeucuoctaikzh"; // correct password for gmail id
+     final String fromEmail = "spacewide1305@gmail.com"; //requires valid gmail id
+		  final String password = "gaurdvatiuoednkf"; // correct password for gmail id
     
  Authenticator auth = new Authenticator() {
 				//override the getPasswordAuthentication method
@@ -77,9 +77,9 @@ Properties props = new Properties();
 	      msg.addHeader("format", "flowed");
 	      msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-	      msg.setFrom(new InternetAddress("Testesw1305@gmail.com", "SpaceWide"));
+	      msg.setFrom(new InternetAddress("spacewide1305@gmail.com", "SpaceWide"));
 
-	      msg.setReplyTo(InternetAddress.parse("Testesw1305@gmail.com", false));
+	      msg.setReplyTo(InternetAddress.parse("spacewid1305@gmail.com", false));
 
 	      msg.setSubject(request.getParameter("assunto"), "UTF-8");
 
@@ -89,7 +89,7 @@ Properties props = new Properties();
 	      msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse((rs.getString("email")), false));
     	  Transport.send(msg);  
  
-System.out.println("Email promocional enviado!!!");
+System.out.println("Email enviado.");
 	    }
 		
          }catch (Exception e) {

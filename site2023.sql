@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 05-Set-2022 às 21:40
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Servidor: 127.0.0.1
+-- Xerado en: 20 de Set de 2022 ás 16:40
+-- Versión do servidor: 10.4.24-MariaDB
+-- Versión do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,103 +18,83 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `site2023`
+-- Base de datos: `site2023`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `artista`
+-- Estrutura da táboa `artista`
 --
 
 CREATE TABLE `artista` (
   `id` int(11) NOT NULL,
   `nome` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
-  `nome_artistico` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
-  `senha` varchar(256) CHARACTER SET utf8mb4 NOT NULL,
-  `localizacao_da_imagem` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg',
-  `estado` enum('ativo','inativo','suspenso','banido') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'ativo',
-  `acesso` tinyint(1) NOT NULL,
-  `codigo_validador` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
-  `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
-  `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Extraindo dados da tabela `artista`
---
-
-INSERT INTO `artista` (`id`, `nome`, `nome_artistico`, `email`, `senha`, `localizacao_da_imagem`, `estado`, `acesso`, `codigo_validador`, `data_de_criacao`, `data_da_ultima_modificacao`) VALUES
-(1, 'JACKSON', 'OTAKU', 'jackson@123', 'SENHACURTA', '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg', 'ativo', 1, '11287357', '2022-08-12 12:08:47', '2022-09-05 13:44:32'),
-(5, 'José', 'maquinista', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', 'banido', 0, '848748956', '2022-09-04 22:29:39', '2022-09-05 17:12:11'),
-(6, 'Marcos', 'cardeal', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', 'suspenso', 0, '848277747', '2022-09-04 22:29:39', '2022-09-05 17:12:13'),
-(7, 'José', 'maquinista', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', 'suspenso', 0, '848748956', '2022-09-04 22:31:27', '2022-09-05 17:12:14'),
-(8, 'Marcos', 'cardeal', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', 'banido', 0, '848277747', '2022-09-04 22:31:27', '2022-09-04 23:52:28'),
-(9, 'José', 'maquinista', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', 'suspenso', 0, '848748956', '2022-09-04 22:31:45', '2022-09-05 17:12:19'),
-(10, 'Marcos', 'cardeal', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', 'suspenso', 0, '848277747', '2022-09-04 22:31:45', '2022-09-05 17:12:32'),
-(11, 'Thanos', 'Equilibrista de Universos', 'Thanos@vingador23', 'joiadamente', 'usuarios/fot7o.jpeg', 'ativo', 0, '84778495', '2022-09-04 22:31:45', '2022-09-05 17:12:51'),
-(12, 'Jascinto', 'Berranto', 'jascinto@43', 'asdddweYg', 'usuarios/fot5o.jpeg', 'inativo', 0, '8422888995', '2022-09-04 22:31:45', '2022-09-04 22:31:45'),
-(13, 'Stefany', 'Silenciosa', 'stefany@queta23', 'voZQeXFd', 'usuarios/fot1o.jpeg', 'inativo', 0, '8377831', '2022-09-04 22:31:45', '2022-09-04 23:52:33'),
-(14, 'Luisa', 'Gritito', 'lulu@santana', 'fPoadedwB', 'usuarios/foto9.jpeg', 'inativo', 0, '84256245', '2022-09-04 22:31:45', '2022-09-04 22:31:45'),
-(15, 'Joana', 'portuguesa', 'joana@de34', 'tQPadCN', 'usuarios/foto0.jpeg', 'inativo', 0, '847772', '2022-09-04 22:31:45', '2022-09-04 22:31:45'),
-(16, 'Fernando', 'LtpMaster', 'fernando@asv344', 'senha2312', 'usuarios/fot2o.jpeg', 'inativo', 0, '8483235', '2022-09-04 22:31:45', '2022-09-04 22:31:45'),
-(17, 'José', 'maquinista', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', 'inativo', 0, '848748956', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(18, 'Marcos', 'cardeal', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', 'inativo', 0, '848277747', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(19, 'Thanos', 'Equilibrista de Universos', 'Thanos@vingador23', 'joiadamente', 'usuarios/fot7o.jpeg', 'inativo', 0, '84778495', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(20, 'Jascinto', 'Berranto', 'jascinto@43', 'asdddweYg', 'usuarios/fot5o.jpeg', 'inativo', 0, '8422888995', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(21, 'Stefany', 'Silenciosa', 'stefany@queta23', 'voZQeXFd', 'usuarios/fot1o.jpeg', 'inativo', 0, '8377831', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(22, 'Luisa', 'Gritito', 'lulu@santana', 'fPoadedwB', 'usuarios/foto9.jpeg', 'inativo', 0, '84256245', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(23, 'Joana', 'portuguesa', 'joana@de34', 'tQPadCN', 'usuarios/foto0.jpeg', 'inativo', 0, '847772', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(24, 'Fernando', 'LtpMaster', 'fernando@asv344', 'senha2312', 'usuarios/fot2o.jpeg', 'inativo', 0, '8483235', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(25, 'Jase', 'corona', 'jodo@dado', 'cachorro341', 'usuarios/fot4o.jpeg', 'inativo', 0, '8412332395', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(26, 'Jacks', 'jotaro', 'jojo@valdo', 'nf2wd123', 'usuarios/foto6.jpeg', 'inativo', 0, '84844495', '2022-09-04 22:32:12', '2022-09-04 22:32:12'),
-(27, 'Marcia', '', 'jmarcia@34', 'potatoAngolano', 'usuarios/foto5.jpeg', 'inativo', 0, '84232215', '2022-09-04 22:32:12', '2022-09-04 22:32:12');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `cliente`
---
-
-CREATE TABLE `cliente` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
+  `nome_artistico` varchar(60) CHARACTER SET utf8mb4 DEFAULT NULL,
   `email` varchar(75) CHARACTER SET utf8mb4 NOT NULL,
   `senha` varchar(256) CHARACTER SET utf8mb4 NOT NULL,
   `localizacao_da_imagem` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg',
-  `estado` enum('ativo','inativo','suspenso','banido') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'ativo',
-  `acesso` tinyint(4) NOT NULL,
-  `codigo_validador` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `estado` enum('ativo','inativo','suspenso','banido') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'inativo',
+  `codigo_validador` int(11) NOT NULL,
   `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
   `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Extraindo dados da tabela `cliente`
+-- Estrutura da táboa `avaliacao`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `email`, `senha`, `localizacao_da_imagem`, `estado`, `acesso`, `codigo_validador`, `data_de_criacao`, `data_da_ultima_modificacao`) VALUES
-(3, 'sandro', 'sandro@maia', '$jddsnwind', '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg', 'ativo', 1, '29568475', '2022-08-15 20:11:00', '2022-09-04 23:23:42'),
-(4, 'Marcos ', 'davi@santos', '123abc', '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg', 'ativo', 1, '36591545', '2022-08-16 15:32:39', '2022-09-03 18:49:32'),
-(6, '[Josevaldo]', '[jose@valdo]', '[naoteinteressa123]', '[usuarios/foto.jpeg]', 'suspenso', 0, '[848799595]', '2022-09-04 21:20:24', '2022-09-04 23:31:52'),
-(7, 'Jackson', 'adil@castro', 'senha', 'usuarios/foto2.jpeg', 'banido', 0, '847539595', '2022-09-04 21:22:02', '2022-09-04 23:31:44'),
-(8, 'Josevaldo', 'jose@valdo', 'naoteinteressa123', 'usuarios/foto.jpeg', 'suspenso', 0, '848799595', '2022-09-04 21:44:09', '2022-09-04 23:28:22'),
-(9, 'Brunin', 'bruno@costa', 'oCuTlFYR', 'usuarios/foto8.jpeg', 'inativo', 0, '8482323195', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(10, 'Morbius', 'Morbius@123', 'ktqGerHJ', 'usuarios/fot7o.jpeg', 'inativo', 0, '848323295', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(11, 'Juca', 'juca@SE23', 'wfvmpgYg', 'usuarios/fot5o.jpeg', 'inativo', 0, '842232325', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(12, 'Janaina', 'jana@banana', 'voZQeXFd', 'usuarios/fot1o.jpeg', 'suspenso', 0, '8323231', '2022-09-04 21:44:09', '2022-09-04 23:31:59'),
-(13, 'Isabela', 'isa@costa', 'fPoapkYB', 'usuarios/foto9.jpeg', 'inativo', 0, '8421315', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(14, 'Jennifer', 'jen@nifer', 'tQPSKJCN', 'usuarios/foto0.jpeg', 'inativo', 0, '843132', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(15, 'Jorge', 'jorge@quimica123', 'senha2312', 'usuarios/fot2o.jpeg', 'inativo', 0, '848323121235', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(16, 'Jose', 'jose@valdo', 'cachorromutante', 'usuarios/fot4o.jpeg', 'inativo', 0, '848232395', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(17, 'JoJo', 'jojo@valdo', 'nf2wd123', 'usuarios/foto6.jpeg', 'inativo', 0, '84844495', '2022-09-04 21:44:09', '2022-09-04 21:44:09'),
-(18, 'Marilda', 'jase@valsa', 'potatoItaliano', 'usuarios/foto5.jpeg', 'inativo', 0, '84877415', '2022-09-04 21:44:09', '2022-09-04 21:44:09');
+CREATE TABLE `avaliacao` (
+  `id` int(11) NOT NULL,
+  `id_artista` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
+  `id_obra_artistica` int(11) NOT NULL,
+  `valor_da_avaliacao` tinyint(1) NOT NULL,
+  `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `obra_artistica`
+-- Estrutura da táboa `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL,
+  `id_artista` int(11) NOT NULL,
+  `id_utente` int(11) NOT NULL,
+  `id_obra_artistica` int(11) NOT NULL,
+  `comentario` varchar(512) NOT NULL,
+  ` id_comentario_antecedente` int(11) DEFAULT NULL,
+  `id_comentario_descendente` int(11) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL,
+  `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da táboa `inscricao`
+--
+
+CREATE TABLE `inscricao` (
+  `id` int(11) NOT NULL,
+  `id_artista_seguidor` int(11) NOT NULL,
+  `id_utente_seguidor` int(11) NOT NULL,
+  `id_artista_seguido` int(11) NOT NULL,
+  `ativo` tinyint(1) NOT NULL,
+  `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da táboa `obra_artistica`
 --
 
 CREATE TABLE `obra_artistica` (
@@ -124,81 +104,212 @@ CREATE TABLE `obra_artistica` (
   `subtitulo` varchar(90) CHARACTER SET utf8mb4 DEFAULT NULL,
   `localizacao_da_imagem` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
   `estado` enum('publicada','pendente','indisponivel','retirada') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'publicada',
-  `disponibilidade` tinyint(1) NOT NULL,
+  `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da táboa `tag`
+--
+
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da táboa `tagmap`
+--
+
+CREATE TABLE `tagmap` (
+  `id` int(11) NOT NULL,
+  `id_obra_artistica` int(11) NOT NULL,
+  `id_tag` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da táboa `utente`
+--
+
+CREATE TABLE `utente` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
+  `email` varchar(75) CHARACTER SET utf8mb4 NOT NULL,
+  `senha` varchar(256) CHARACTER SET utf8mb4 NOT NULL,
+  `localizacao_da_imagem` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg',
+  `acesso` enum('comum','administrador') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado` enum('ativo','inativo','suspenso','banido') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'inativo',
+  `codigo_validador` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `data_de_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
   `data_da_ultima_modificacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `obra_artistica`
---
-
-INSERT INTO `obra_artistica` (`id`, `id_artista`, `titulo`, `subtitulo`, `localizacao_da_imagem`, `estado`, `disponibilidade`, `data_de_criacao`, `data_da_ultima_modificacao`) VALUES
-(29, 1, 'charcoal feelings l', '', '/usuarios/artista/publicacoes/1/62f94313a321d0.23898826.jpg', 'publicada', 0, '2022-08-14 19:51:12', '2022-08-14 19:51:12'),
-(30, 1, 'cafezinho da tarde', '', '/usuarios/artista/publicacoes/1/62f943524793a6.50789901.jpg', 'publicada', 0, '2022-08-14 19:52:14', '2022-08-14 19:52:14'),
-(31, 1, 'mar japonÃªs', '', '/usuarios/artista/publicacoes/1/62f9437aeae974.89519490.jpg', 'publicada', 0, '2022-08-14 19:52:55', '2022-08-14 19:52:55'),
-(32, 1, 'anna', '', '/usuarios/artista/publicacoes/1/62fa4a53f02d50.33381938.jpg', 'publicada', 0, '2022-08-15 14:34:22', '2022-08-15 14:34:22'),
-(33, 1, 'Anya Forger', '(<> _ <>)', '/usuarios/artista/publicacoes/1/62fa4cb27d3965.98000471.jpg', 'publicada', 0, '2022-08-15 14:44:28', '2022-08-15 14:44:28'),
-(35, 1, 'i\'m groot', '', '/usuarios/artista/publicacoes/1/62fa4dda945a96.33256740.jpg', 'publicada', 0, '2022-08-15 14:49:24', '2022-08-15 14:49:24'),
-(36, 1, 'Machintosh', '', '/usuarios/artista/publicacoes/1/62fa4ebc376132.58163694.webp', 'publicada', 0, '2022-08-15 14:53:10', '2022-08-15 14:53:10'),
-(37, 1, 'felix, the cat', '', '/usuarios/artista/publicacoes/1/62fad4610e16e7.79875381.gif', 'publicada', 0, '2022-08-16 00:23:21', '2022-08-16 00:23:21'),
-(39, 1, 'Derealisation', 'rainbow', '/usuarios/artista/publicacoes/1/62fbaef5c1fc45.45708200.webp', 'publicada', 0, '2022-08-16 15:55:56', '2022-08-16 15:55:56'),
-(40, 1, 'hell 16th century', '', '/usuarios/artista/publicacoes/1/62fbaf81ea6111.85102919.webp', 'publicada', 0, '2022-08-16 15:58:16', '2022-08-18 13:08:35');
-
---
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `artista`
+-- Indexes for table `artista`
 --
 ALTER TABLE `artista`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `cliente`
+-- Indexes for table `avaliacao`
 --
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `avaliacao`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_artista` (`id_artista`),
+  ADD KEY `id_utente` (`id_utente`),
+  ADD KEY `avaliacao_ibfk_3` (`id_obra_artistica`);
 
 --
--- Índices para tabela `obra_artistica`
+-- Indexes for table `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_artista` (`id_artista`),
+  ADD KEY `id_utente` (`id_utente`),
+  ADD KEY ` id_comentario_antecedente` (` id_comentario_antecedente`),
+  ADD KEY `id_comentario_descendente` (`id_comentario_descendente`),
+  ADD KEY `id_obra_artistica` (`id_obra_artistica`);
+
+--
+-- Indexes for table `inscricao`
+--
+ALTER TABLE `inscricao`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_artista_seguidor` (`id_artista_seguidor`),
+  ADD KEY `id_utente_seguidor` (`id_utente_seguidor`),
+  ADD KEY `id_artista_seguido` (`id_artista_seguido`);
+
+--
+-- Indexes for table `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_artista` (`id_artista`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- Indexes for table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tagmap`
+--
+ALTER TABLE `tagmap`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_obra_artistica` (`id_obra_artistica`),
+  ADD KEY `id_tag` (`id_tag`);
+
+--
+-- Indexes for table `utente`
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `artista`
+-- AUTO_INCREMENT for table `artista`
 --
 ALTER TABLE `artista`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `cliente`
+-- AUTO_INCREMENT for table `avaliacao`
 --
-ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+ALTER TABLE `avaliacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `obra_artistica`
+-- AUTO_INCREMENT for table `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `inscricao`
+--
+ALTER TABLE `inscricao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- AUTO_INCREMENT for table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tagmap`
+--
+ALTER TABLE `tagmap`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `utente`
+--
+ALTER TABLE `utente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricións para os envorcados das táboas
 --
 
 --
--- Limitadores para a tabela `obra_artistica`
+-- Restricións para a táboa `avaliacao`
+--
+ALTER TABLE `avaliacao`
+  ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`),
+  ADD CONSTRAINT `avaliacao_ibfk_2` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`),
+  ADD CONSTRAINT `avaliacao_ibfk_3` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`);
+
+--
+-- Restricións para a táboa `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_3` FOREIGN KEY (` id_comentario_antecedente`) REFERENCES `comentario` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_4` FOREIGN KEY (`id_comentario_descendente`) REFERENCES `comentario` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_5` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`);
+
+--
+-- Restricións para a táboa `inscricao`
+--
+ALTER TABLE `inscricao`
+  ADD CONSTRAINT `inscricao_ibfk_1` FOREIGN KEY (`id_artista_seguidor`) REFERENCES `artista` (`id`),
+  ADD CONSTRAINT `inscricao_ibfk_2` FOREIGN KEY (`id_utente_seguidor`) REFERENCES `utente` (`id`),
+  ADD CONSTRAINT `inscricao_ibfk_3` FOREIGN KEY (`id_artista_seguido`) REFERENCES `artista` (`id`);
+
+--
+-- Restricións para a táboa `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
-  ADD CONSTRAINT `obra_artistica_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `obra_artistica_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`);
+
+--
+-- Restricións para a táboa `tagmap`
+--
+ALTER TABLE `tagmap`
+  ADD CONSTRAINT `tagmap_ibfk_1` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`),
+  ADD CONSTRAINT `tagmap_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
