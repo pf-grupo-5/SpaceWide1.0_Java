@@ -13,37 +13,37 @@ import classes.Cliente;
 public class ClienteDao {
 
     public static Cliente getClienteById(int id) {
-        Cliente cliente = null;
+        Cliente utente = null;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from cliente where id=?");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from utente where id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                cliente = new Cliente();
-                cliente.setId(rs.getInt("id"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setSenha(rs.getString("senha"));
-                cliente.setEstado(rs.getString("estado"));
+                utente = new Cliente();
+                utente.setId(rs.getInt("id"));
+                utente.setNome(rs.getString("nome"));
+                utente.setEmail(rs.getString("email"));
+                utente.setSenha(rs.getString("senha"));
+                utente.setEstado(rs.getString("estado"));
 
             }
         } catch (Exception erro) {
             System.out.println(erro);
         }
-        return cliente;
+        return utente;
     }
 
-    public static int editarCliente(Cliente cliente) {
+    public static int editarCliente(Cliente utente) {
         int status = 0;
         try {
             Connection con = getConnection();
             PreparedStatement ps = (PreparedStatement) con 
-                    .prepareStatement("UPDATE cliente SET nome=?, email=?, acesso=?  WHERE id=?");
-            ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getEmail());
-            ps.setString(3, cliente.getAcesso());
-            ps.setInt(4, cliente.getId());
+                    .prepareStatement("UPDATE utente SET nome=?, email=?, acesso=?  WHERE id=?");
+            ps.setString(1, utente.getNome());
+            ps.setString(2, utente.getEmail());
+            ps.setString(3, utente.getAcesso());
+            ps.setInt(4, utente.getId());
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);
@@ -56,21 +56,21 @@ public class ClienteDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = (PreparedStatement) con
-                    .prepareStatement("SELECT * FROM cliente ORDER BY id LIMIT " + (inicio - 1) + " ," + total);
+                    .prepareStatement("SELECT * FROM utente ORDER BY id LIMIT " + (inicio - 1) + " ," + total);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                Cliente cliente = new Cliente();
-                cliente.setId(rs.getInt("id"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setSenha(rs.getString("senha"));
-                cliente.setEstado(rs.getString("estado"));
-                cliente.setAcesso(rs.getString("acesso"));
-                cliente.setCodigo_validador(rs.getString("codigo_validador"));
-                cliente.setData_de_criacao(rs.getTimestamp("data_de_criacao"));
-                cliente.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
-                list.add(cliente);
+                Cliente utente = new Cliente();
+                utente.setId(rs.getInt("id"));
+                utente.setNome(rs.getString("nome"));
+                utente.setEmail(rs.getString("email"));
+                utente.setSenha(rs.getString("senha"));
+                utente.setEstado(rs.getString("estado"));
+                utente.setAcesso(rs.getString("acesso"));
+                utente.setCodigo_validador(rs.getString("codigo_validador"));
+                utente.setData_de_criacao(rs.getTimestamp("data_de_criacao"));
+                utente.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
+                list.add(utente);
             }
         } catch (Exception erro) {
             System.out.println(erro);
@@ -82,14 +82,14 @@ public class ClienteDao {
         List<Cliente> list = new ArrayList<>();
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from cliente where");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from utente where");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setId(rs.getInt("id"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setEmail(rs.getString("email"));
-                list.add(cliente);
+                Cliente utente = new Cliente();
+                utente.setId(rs.getInt("id"));
+                utente.setNome(rs.getString("nome"));
+                utente.setEmail(rs.getString("email"));
+                list.add(utente);
             }
         } catch (Exception erro) {
             System.out.println(erro);
@@ -101,7 +101,7 @@ public class ClienteDao {
         int contagem = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT count(*) AS contagem FROM cliente");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT count(*) AS contagem FROM utente");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 contagem = rs.getInt("contagem");
@@ -119,28 +119,28 @@ public class ClienteDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = (PreparedStatement) con
-                    .prepareStatement("SELECT count(*) AS ativo FROM cliente where estado = 'Ativo'");
+                    .prepareStatement("SELECT count(*) AS ativo FROM utente where estado = 'Ativo'");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 valores[0] = rs.getInt("ativo");
             }
 
             ps = (PreparedStatement) con
-                    .prepareStatement("SELECT count(*) AS inativo FROM cliente where estado = 'Inativo'");
+                    .prepareStatement("SELECT count(*) AS inativo FROM utente where estado = 'Inativo'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 valores[1] = rs.getInt("inativo");
             }
 
             ps = (PreparedStatement) con
-                    .prepareStatement("SELECT count(*) AS suspenso FROM cliente where estado = 'Suspenso'");
+                    .prepareStatement("SELECT count(*) AS suspenso FROM utente where estado = 'Suspenso'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 valores[2] = rs.getInt("suspenso");
             }
 
             ps = (PreparedStatement) con
-                    .prepareStatement("SELECT count(*) AS banido FROM cliente where estado = 'Banido'");
+                    .prepareStatement("SELECT count(*) AS banido FROM utente where estado = 'Banido'");
             rs = ps.executeQuery();
             while (rs.next()) {
                 valores[3] = rs.getInt("banido");
@@ -152,24 +152,24 @@ public class ClienteDao {
         return valores;
     }
 
-    public static int bloquearCliente(Cliente cliente) {
+    public static int bloquearCliente(Cliente utente) {
         int status = 0;
-        String estadocliente = "";
+        String estadoutente = "";
 
-        if (cliente.getEstado().equalsIgnoreCase("ativo")) {
-            estadocliente = "inativo";
-        } else if (cliente.getEstado().equalsIgnoreCase("inativo")) {
-            estadocliente = "suspenso";
-        } else if (cliente.getEstado().equalsIgnoreCase("suspenso")) {
-            estadocliente = "banido";
+        if (utente.getEstado().equalsIgnoreCase("ativo")) {
+            estadoutente = "inativo";
+        } else if (utente.getEstado().equalsIgnoreCase("inativo")) {
+            estadoutente = "suspenso";
+        } else if (utente.getEstado().equalsIgnoreCase("suspenso")) {
+            estadoutente = "banido";
         } else {
-            estadocliente = "ativo";
+            estadoutente = "ativo";
         }
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE cliente SET estado=? WHERE id=?");
-            ps.setString(1, estadocliente);
-            ps.setInt(2, cliente.getId());
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE utente SET estado=? WHERE id=?");
+            ps.setString(1, estadoutente);
+            ps.setInt(2, utente.getId());
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);
@@ -177,12 +177,12 @@ public class ClienteDao {
         return status;
     }
 
-    public static int excluirCliente(Cliente cliente) {
+    public static int excluirCliente(Cliente utente) {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM cliente WHERE id=?");
-            ps.setInt(1, cliente.getId());
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM utente WHERE id=?");
+            ps.setInt(1, utente.getId());
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);
@@ -195,7 +195,7 @@ public class ClienteDao {
 
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from cliente where email=?");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from utente where email=?");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             // Verifica se a consulta retornou resultado

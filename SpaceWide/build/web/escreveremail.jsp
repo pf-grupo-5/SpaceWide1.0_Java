@@ -17,7 +17,7 @@
 		<div class="form-v4-content">
 			<div class="form-left">
 			<form class="form-detail"  action="javamail.jsp" method="post">
-				<h2>Redija emails promocionais</h2>
+				<h2>Enviar email:</h2>
 				<div class="form-group">
 					<div class="form-row form-row-1">
 						<label for="first_name">Assunto...</label>

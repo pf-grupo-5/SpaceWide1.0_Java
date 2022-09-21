@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Xerado en: 20 de Set de 2022 ás 16:40
--- Versión do servidor: 10.4.24-MariaDB
--- Versión do PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Tempo de geração: 21-Set-2022 às 15:23
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `site2023`
+-- Banco de dados: `site2023`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `artista`
+-- Estrutura da tabela `artista`
 --
 
 CREATE TABLE `artista` (
@@ -43,7 +43,7 @@ CREATE TABLE `artista` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `avaliacao`
+-- Estrutura da tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
@@ -59,7 +59,7 @@ CREATE TABLE `avaliacao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `comentario`
+-- Estrutura da tabela `comentario`
 --
 
 CREATE TABLE `comentario` (
@@ -78,7 +78,7 @@ CREATE TABLE `comentario` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `inscricao`
+-- Estrutura da tabela `inscricao`
 --
 
 CREATE TABLE `inscricao` (
@@ -94,7 +94,7 @@ CREATE TABLE `inscricao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `obra_artistica`
+-- Estrutura da tabela `obra_artistica`
 --
 
 CREATE TABLE `obra_artistica` (
@@ -111,7 +111,7 @@ CREATE TABLE `obra_artistica` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `tag`
+-- Estrutura da tabela `tag`
 --
 
 CREATE TABLE `tag` (
@@ -122,7 +122,7 @@ CREATE TABLE `tag` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `tagmap`
+-- Estrutura da tabela `tagmap`
 --
 
 CREATE TABLE `tagmap` (
@@ -134,7 +134,7 @@ CREATE TABLE `tagmap` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da táboa `utente`
+-- Estrutura da tabela `utente`
 --
 
 CREATE TABLE `utente` (
@@ -151,17 +151,47 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Extraindo dados da tabela `utente`
+--
+
+INSERT INTO `utente` (`id`, `nome`, `email`, `senha`, `localizacao_da_imagem`, `acesso`, `estado`, `codigo_validador`, `data_de_criacao`, `data_da_ultima_modificacao`) VALUES
+(1, 'JACKSON', 'jackson@123', 'SENHACURTA', '/usuarios/foto_de_perfil_padrao/foto_de_perfil_padrao.jpg', '', '', '11287357', '2022-08-12 15:08:47', '2022-09-05 16:44:32'),
+(5, 'José', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', '', '', '848748956', '2022-09-05 01:29:39', '2022-09-05 20:12:11'),
+(6, 'Marcos', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', '', '', '848277747', '2022-09-05 01:29:39', '2022-09-05 20:12:13'),
+(7, 'José', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', '', '', '848748956', '2022-09-05 01:31:27', '2022-09-05 20:12:14'),
+(8, 'Marcos', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', '', '', '848277747', '2022-09-05 01:31:27', '2022-09-05 02:52:28'),
+(9, 'José', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', '', '', '848748956', '2022-09-05 01:31:45', '2022-09-05 20:12:19'),
+(10, 'Marcos', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', '', '', '848277747', '2022-09-05 01:31:45', '2022-09-05 20:12:32'),
+(11, 'Thanos', 'Thanos@vingador23', 'joiadamente', 'usuarios/fot7o.jpeg', '', '', '84778495', '2022-09-05 01:31:45', '2022-09-05 20:12:51'),
+(12, 'Jascinto', 'jascinto@43', 'asdddweYg', 'usuarios/fot5o.jpeg', '', '', '8422888995', '2022-09-05 01:31:45', '2022-09-05 01:31:45'),
+(13, 'Stefany', 'stefany@queta23', 'voZQeXFd', 'usuarios/fot1o.jpeg', '', '', '8377831', '2022-09-05 01:31:45', '2022-09-05 02:52:33'),
+(14, 'Luisa', 'lulu@santana', 'fPoadedwB', 'usuarios/foto9.jpeg', '', '', '84256245', '2022-09-05 01:31:45', '2022-09-05 01:31:45'),
+(15, 'Joana', 'joana@de34', 'tQPadCN', 'usuarios/foto0.jpeg', '', '', '847772', '2022-09-05 01:31:45', '2022-09-05 01:31:45'),
+(16, 'Fernando', 'fernando@asv344', 'senha2312', 'usuarios/fot2o.jpeg', '', '', '8483235', '2022-09-05 01:31:45', '2022-09-05 01:31:45'),
+(17, 'José', 'joor@2756', 'hamood', 'usuarios/foto.jpeg', '', '', '848748956', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(18, 'Marcos', 'bruno@cassio', 'oWOMDX', 'usuarios/foto8.jpeg', '', '', '848277747', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(19, 'Thanos', 'Thanos@vingador23', 'joiadamente', 'usuarios/fot7o.jpeg', '', '', '84778495', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(20, 'Jascinto', 'jascinto@43', 'asdddweYg', 'usuarios/fot5o.jpeg', '', '', '8422888995', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(21, 'Stefany', 'stefany@queta23', 'voZQeXFd', 'usuarios/fot1o.jpeg', '', '', '8377831', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(22, 'Luisa', 'lulu@santana', 'fPoadedwB', 'usuarios/foto9.jpeg', '', '', '84256245', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(23, 'Joana', 'joana@de34', 'tQPadCN', 'usuarios/foto0.jpeg', '', '', '847772', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(24, 'Fernando', 'fernando@asv344', 'senha2312', 'usuarios/fot2o.jpeg', '', '', '8483235', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(25, 'Jase', 'jodo@dado', 'cachorro341', 'usuarios/fot4o.jpeg', '', '', '8412332395', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(26, 'Jacks', 'jojo@valdo', 'nf2wd123', 'usuarios/foto6.jpeg', '', '', '84844495', '2022-09-05 01:32:12', '2022-09-05 01:32:12'),
+(27, 'Marcia', 'jmarcia@34', 'potatoAngolano', 'usuarios/foto5.jpeg', '', '', '84232215', '2022-09-05 01:32:12', '2022-09-05 01:32:12');
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `artista`
+-- Índices para tabela `artista`
 --
 ALTER TABLE `artista`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `avaliacao`
+-- Índices para tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`id`),
@@ -170,7 +200,7 @@ ALTER TABLE `avaliacao`
   ADD KEY `avaliacao_ibfk_3` (`id_obra_artistica`);
 
 --
--- Indexes for table `comentario`
+-- Índices para tabela `comentario`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id`),
@@ -181,7 +211,7 @@ ALTER TABLE `comentario`
   ADD KEY `id_obra_artistica` (`id_obra_artistica`);
 
 --
--- Indexes for table `inscricao`
+-- Índices para tabela `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD PRIMARY KEY (`id`),
@@ -190,20 +220,20 @@ ALTER TABLE `inscricao`
   ADD KEY `id_artista_seguido` (`id_artista_seguido`);
 
 --
--- Indexes for table `obra_artistica`
+-- Índices para tabela `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_artista` (`id_artista`);
 
 --
--- Indexes for table `tag`
+-- Índices para tabela `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tagmap`
+-- Índices para tabela `tagmap`
 --
 ALTER TABLE `tagmap`
   ADD PRIMARY KEY (`id`),
@@ -211,69 +241,69 @@ ALTER TABLE `tagmap`
   ADD KEY `id_tag` (`id_tag`);
 
 --
--- Indexes for table `utente`
+-- Índices para tabela `utente`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `artista`
+-- AUTO_INCREMENT de tabela `artista`
 --
 ALTER TABLE `artista`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `avaliacao`
+-- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `comentario`
+-- AUTO_INCREMENT de tabela `comentario`
 --
 ALTER TABLE `comentario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `inscricao`
+-- AUTO_INCREMENT de tabela `inscricao`
 --
 ALTER TABLE `inscricao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `obra_artistica`
+-- AUTO_INCREMENT de tabela `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tag`
+-- AUTO_INCREMENT de tabela `tag`
 --
 ALTER TABLE `tag`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tagmap`
+-- AUTO_INCREMENT de tabela `tagmap`
 --
 ALTER TABLE `tagmap`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `utente`
+-- AUTO_INCREMENT de tabela `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Restricións para os envorcados das táboas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restricións para a táboa `avaliacao`
+-- Limitadores para a tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD CONSTRAINT `avaliacao_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`),
@@ -281,7 +311,7 @@ ALTER TABLE `avaliacao`
   ADD CONSTRAINT `avaliacao_ibfk_3` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`);
 
 --
--- Restricións para a táboa `comentario`
+-- Limitadores para a tabela `comentario`
 --
 ALTER TABLE `comentario`
   ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`),
@@ -291,7 +321,7 @@ ALTER TABLE `comentario`
   ADD CONSTRAINT `comentario_ibfk_5` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`);
 
 --
--- Restricións para a táboa `inscricao`
+-- Limitadores para a tabela `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD CONSTRAINT `inscricao_ibfk_1` FOREIGN KEY (`id_artista_seguidor`) REFERENCES `artista` (`id`),
@@ -299,13 +329,13 @@ ALTER TABLE `inscricao`
   ADD CONSTRAINT `inscricao_ibfk_3` FOREIGN KEY (`id_artista_seguido`) REFERENCES `artista` (`id`);
 
 --
--- Restricións para a táboa `obra_artistica`
+-- Limitadores para a tabela `obra_artistica`
 --
 ALTER TABLE `obra_artistica`
   ADD CONSTRAINT `obra_artistica_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artista` (`id`);
 
 --
--- Restricións para a táboa `tagmap`
+-- Limitadores para a tabela `tagmap`
 --
 ALTER TABLE `tagmap`
   ADD CONSTRAINT `tagmap_ibfk_1` FOREIGN KEY (`id_obra_artistica`) REFERENCES `obra_artistica` (`id`),
