@@ -27,8 +27,8 @@
 
             <div class="dropdown-menu">
                 <ul>
-                  <li><a href="artistacontrolar.jsp?pag=1">Gerenciar Artistas</a></li>
-                  <li><a href="artistarelatorio.jsp?pag=1">Relatório de Artistas</a></li>
+                  <li><a href="artistacontrolar.jsp">Gerenciar Artistas</a></li>
+                  <li><a href="artistarelatorio.jsp">Relatório de Artistas</a></li>
                 </ul>
               </div>
            <li><a href="#"><%=request.getSession().getAttribute("nome")%> <i class="fas fa-caret-down"></i></a>

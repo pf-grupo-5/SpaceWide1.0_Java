@@ -91,6 +91,28 @@ public class UsuarioDao {
         return list;
     }
     
+    public static List<Usuario> getUsuariosClientes(int inicio, int total) {
+        List<Usuario> list = new ArrayList<Usuario>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM usuario ORDER BY id where acesso = 'utente' ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setAcesso(rs.getString("acesso"));
+                usuario.setEstado(rs.getString("estado"));
+                list.add(usuario);
+            }
+        } catch (Exception erro) {
+            System.out.println(erro);
+        }
+        return list;
+    }
+    
 
     public static List<Usuario> getRelatorio() {
         List<Usuario> list = new ArrayList<Usuario>();
@@ -183,22 +205,6 @@ public class UsuarioDao {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE usuario SET estado=? WHERE id=?");
             ps.setString(1, statusdousuario);
             ps.setInt(2, usuario.getId());
-            status = ps.executeUpdate();
-        } catch (Exception erro) {
-            System.out.println(erro);
-        }
-        return status;
-    }
-
-    public static int cadastrarUsuario(Usuario usuario) {
-        int status = 0;
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("INSERT INTO `usuario` (`nome`, `nome_artistico`, `email`, `senha`,`acesso`, `codigo_validador`, `estado`) VALUES(?,?,?,?,?,'ativo')");
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getSenha());
-            ps.setString(4, usuario.getAcesso());
             status = ps.executeUpdate();
         } catch (Exception erro) {
             System.out.println(erro);

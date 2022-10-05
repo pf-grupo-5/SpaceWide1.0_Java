@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="dao.Dao, dao.ClienteDao, classes.Cliente, java.util.*"%>
+<%@ page import="dao.Dao, dao.UsuarioDao, java.util.*"%>
 
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"

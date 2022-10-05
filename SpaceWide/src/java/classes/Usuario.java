@@ -103,7 +103,6 @@ public class Usuario {
     public void setDateFormat(SimpleDateFormat dateFormat) {
         this.dateFormat = dateFormat;
     }
-    
 
     public String getNome_artistico() {
         return nome_artistico;
@@ -112,4 +111,13 @@ public class Usuario {
     public void setNome_artistico(String nome_artistico) {
         this.nome_artistico = nome_artistico;
     }
+
+    public String getLocalizacao_da_imagem_de_perfil() {
+        return localizacao_da_imagem_de_perfil;
+    }
+
+    public void setLocalizacao_da_imagem_de_perfil(String localizacao_da_imagem_de_perfil) {
+        this.localizacao_da_imagem_de_perfil = localizacao_da_imagem_de_perfil;
+    }
+
 }
