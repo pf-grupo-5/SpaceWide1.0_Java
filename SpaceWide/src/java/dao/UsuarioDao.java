@@ -61,6 +61,8 @@ public class UsuarioDao {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setAcesso(rs.getString("acesso"));
                 usuario.setEstado(rs.getString("estado"));
+                usuario.setData_de_criacao(rs.getTimestamp("data_de_criacao"));
+                usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
         } catch (Exception erro) {
@@ -68,12 +70,12 @@ public class UsuarioDao {
         }
         return list;
     }
-    
+
     public static List<Usuario> getUsuariosArtistas(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM usuario ORDER BY id where acesso = 'artista' ");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM usuario AS artista where acesso = 'artista'");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario usuario = new Usuario();
@@ -83,6 +85,8 @@ public class UsuarioDao {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setAcesso(rs.getString("acesso"));
                 usuario.setEstado(rs.getString("estado"));
+                usuario.setData_de_criacao(rs.getTimestamp("data_de_criacao"));
+                usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
         } catch (Exception erro) {
@@ -90,12 +94,12 @@ public class UsuarioDao {
         }
         return list;
     }
-    
+
     public static List<Usuario> getUsuariosClientes(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
             Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM usuario ORDER BY id where acesso = 'utente' ");
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM usuario AS utente where acesso = 'utente' ");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario usuario = new Usuario();
@@ -105,6 +109,8 @@ public class UsuarioDao {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setAcesso(rs.getString("acesso"));
                 usuario.setEstado(rs.getString("estado"));
+                usuario.setData_de_criacao(rs.getTimestamp("data_de_criacao"));
+                usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
         } catch (Exception erro) {
@@ -112,7 +118,6 @@ public class UsuarioDao {
         }
         return list;
     }
-    
 
     public static List<Usuario> getRelatorio() {
         List<Usuario> list = new ArrayList<Usuario>();
@@ -221,7 +226,8 @@ public class UsuarioDao {
             ResultSet rs = ps.executeQuery();
             //Verifica se a consulta retornou resultado
             if (rs.next()) {
-                if (rs.getString("status").equals("ativo")) {
+                    if (rs.getString("acesso").equals("administrador")) {
+                        if (rs.getString("estado").equals("ativo")) {
                     if (rs.getString("senha").equals(senha)) {
                         usuario.setId(rs.getInt("id"));
                         usuario.setNome(rs.getString("nome"));
@@ -238,6 +244,10 @@ public class UsuarioDao {
                 }
             } else {
                 // E-mail não existe
+                usuario = null;
+            }
+            } else {
+                //O acesso é inválido
                 usuario = null;
             }
         } catch (Exception erro) {

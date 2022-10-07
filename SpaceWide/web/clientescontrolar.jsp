@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="dao.Dao, dao.UsuarioDao, java.util.*"%>
+<%@ page import="dao.Dao, dao.UsuarioDao, classes.Usuario, java.util.*"%>
 
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
@@ -38,17 +38,10 @@
 			id = id * total + 1;
 		}
 
-		List<Cliente> list = ClienteDao.getClientes(id, total);
+		List<Usuario> list = UsuarioDao.getUsuariosClientes(id, total);
 		request.setAttribute("list", list);
 
-		int contagem = ClienteDao.getContagem();
-		int i;
-		request.setAttribute("contagem", contagem);
-		if (contagem % total == 0) {
-			contagem = contagem / total;
-		} else {
-			contagem = contagem / total + 1;
-		}
+		
 		%>
 
 		<h4>Lista de Clientes</h4>
@@ -75,23 +68,8 @@
             </div>
 
 		<div class="container footer">
-			<ul class="pagination">
-				<%
-				for (i = 1; i <= contagem; i++) {
-				%>
-
-
-
-				<li class="active" style="background-color: #008ddd;"><a
-					href="clientescontrolar.jsp?pag=<%=i%>"><%=i%></a></li>
-
-
-				<%
-				}
-				%>
-			</ul>
-
-		</div>
+			
+                </div>
 
 
 	</div>

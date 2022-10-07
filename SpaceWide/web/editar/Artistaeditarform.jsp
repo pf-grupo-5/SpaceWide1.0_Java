@@ -1,4 +1,4 @@
-<%@ page import="dao.Dao, dao.ArtistaDao, classes.Artista, java.util.*"%>
+<%@ page import="dao.Dao, dao.UsuarioDao, classes.Usuario, java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
@@ -32,7 +32,7 @@
 
         <%
             String id = request.getParameter("id");
-            Artista ar = ArtistaDao.getArtistaById(Integer.parseInt(id));
+            Usuario ar = UsuarioDao.getUsuarioById(Integer.parseInt(id));
         %>
 
         <div class="container">
