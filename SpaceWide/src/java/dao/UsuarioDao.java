@@ -70,7 +70,7 @@ public class UsuarioDao {
         }
         return list;
     }
-
+//$2y$13$NY6M8WT39ScTcopTK5zfKeG4VWpKHIGdZ5kwwfpTjkZvooPdVTTYq
     public static List<Usuario> getUsuariosArtistas(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
