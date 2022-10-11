@@ -1,5 +1,5 @@
-<%@ page import="dao.Dao, dao.ArtistaDao"%>
-<jsp:useBean id="u" class="classes.Artista"></jsp:useBean>
+<%@ page import="dao.Dao, dao.UsuarioDao"%>
+<jsp:useBean id="u" class="classes.Usuario"></jsp:useBean>
 <jsp:setProperty property="*" name="u"/>
 
 <%
@@ -12,7 +12,7 @@
 	}
 	%>
 	<%	
-		int i = ArtistaDao.excluirArtista(u);
+		int i = UsuarioDao.excluirUsuario(u);
 		
 		if(i > 0) {
 			response.sendRedirect("../artistacontrolar.jsp?pag=1");

@@ -1,5 +1,5 @@
-<%@ page import="dao.Dao, dao.ClienteDao"%>
-<jsp:useBean id="u" class="classes.Cliente"></jsp:useBean>
+<%@ page import="dao.Dao, dao.UsuarioDao"%>
+<jsp:useBean id="u" class="classes.Usuario"></jsp:useBean>
 <jsp:setProperty property="*" name="u"/>
 
  <%
@@ -13,7 +13,7 @@
         %>
         
 	<%	
-		int i = ClienteDao.editarCliente(u);
+		int i = UsuarioDao.editarUsuario(u);
 		
 		if(i > 0) {
 			response.sendRedirect("../clientescontrolar.jsp?pag=1");

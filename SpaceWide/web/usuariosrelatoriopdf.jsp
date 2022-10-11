@@ -1,5 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="dao.Dao, dao.UsuarioDao, classes.Usuario, java.util.*"%>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +24,7 @@
     </head>
     <body>
         
-            <%@include file="acessoadm.jsp"%>
+            <%@include file="acesso.jsp"%>
         
             <div class="topnav">
                 <%@include file="menu.jsp"%>
@@ -32,7 +35,7 @@
                 List<Usuario> list = UsuarioDao.getRelatorio();
                 request.setAttribute("list", list);
                
-                int[] valores = UsuarioDao.getRelatorio
+                int[] valores = UsuarioDao.getRelatorioUsuarios();
                 request.setAttribute("valores", valores);
                 
 

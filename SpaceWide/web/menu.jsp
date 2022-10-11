@@ -7,8 +7,8 @@
     <h1 class="logo" ><a href="principal/principal.jsp">Space<span>Wide</span></a></h1>
       <ul>
           
-        <li><a href="#">Obra_artística<i class="fas fa-caret-down"></i></a>
-
+        <li><a href="#">Obra artísticas<i class="fas fa-caret-down"></i></a>
+            
             <div class="dropdown-menu">
                 <ul>
                   <li><a href="obrartisticacontrolar.jsp?pag=1">Gerenciar Obras</a></li>
@@ -31,6 +31,8 @@
                   <li><a href="artistarelatorio.jsp">Relatório de Artistas</a></li>
                 </ul>
               </div>
+                    <li><a href="usuarioscontrolar.jsp?pag=1">Usuario<i class="fas fa-caret-down"></i></a>
+
            <li><a href="#"><%=request.getSession().getAttribute("nome")%> <i class="fas fa-caret-down"></i></a>
 
             <div class="dropdown-menu">
