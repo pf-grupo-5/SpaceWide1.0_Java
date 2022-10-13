@@ -16,6 +16,7 @@
                 <div class="menu">
                 </div>
             </div> 
+            <% String usuario = (String) request.getSession().getAttribute("user");%>
             <div class="content">
                 <h1><br><span>Artes digitais & Fotografias</span><br>Com alta qualidade</h1>
                 <p class="par">O SpaceWide é uma plataforma de compartilhamento e venda de Imagens digitais<br>
@@ -28,15 +29,23 @@
                     <form action="login.jsp" method="post"> 
                         <h2>Space<span>Wide</span></h2>
                         <input type="email" name="email" max="75" placeholder="Email..." required>
-                        <input type="password" id="senha" name="senha" max="75" placeholder="Senha..." required>
+                        <input type="password" id="senha" name="senha" max="75" placeholder="Senha...">
                         <div class="control-group">
-                           
-                            <button type="submit" name="submit" class="btnn">Entrar</button>
+
+                            <button type="submit" name="submit" class="btnn" onclick="validarUsuario()">Entrar</button>
+                            <script type="text">
+               function validarUsuario(){
+                   if(senha == null){
+                       alert("Usuario incorreto!");
+                   }
+               }
+                            </script>
                     </form>
                 </div>
                 <p class="link">Acesso para administrador.</p>  
             </div>
         </div>
     </div>
+
 </body>
 </html>

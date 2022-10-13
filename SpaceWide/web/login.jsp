@@ -21,7 +21,7 @@
 
     } else {
         response.sendRedirect("index.jsp");
-        request.setAttribute("msg", "Informe o login e senha.");
+        
     }
 
 

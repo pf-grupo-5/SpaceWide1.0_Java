@@ -52,7 +52,7 @@
 
             %>
 
-            <h4>Lista de Artistas</h4>
+            <h4>Relatório de Usuarios</h4>
             <div class="divider"></div>
             <div class="section">
                 <table class="responsive-table">
@@ -67,7 +67,7 @@
                             <td>${user.getEstado()}</td>
                             <td>${user.getData_de_criacao()}</td>
                             <td>${user.getData_da_ultima_modificacao()}
-                            <td><a href="editar/UsuarioBloquear.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle">lock</i></a></td>
+                            <td><a href="editar/Usuariobloquear.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle">lock</i></a></td>
                             <td><a href="editar/Usuarioexcluir.jsp?id=${user.getId()}" onclick="return confirm('Deseja deletar?');"><i class="material-icons middle ">delete</i></a></td>            
                             <td><a href="editar/Usuarioeditarform.jsp?id=${user.getId()}"> <i class="material-icons middle">edit</i></a></td>
                         </tr>	
