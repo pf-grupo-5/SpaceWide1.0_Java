@@ -6,7 +6,7 @@
  
     <h1 class="logo" ><a href="principal/principal.jsp">Space<span>Wide</span></a></h1>
       <ul>
-          
+          <h1 class="logo" ><a href="usuarioscontrolar.jsp?pag=1">usuarios</a></h1>
         <li><a href="#">Obra artísticas<i class="fas fa-caret-down"></i></a>
             
             <div class="dropdown-menu">

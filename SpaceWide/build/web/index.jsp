@@ -32,14 +32,8 @@
                         <input type="password" id="senha" name="senha" max="75" placeholder="Senha...">
                         <div class="control-group">
 
-                            <button type="submit" name="submit" class="btnn" onclick="validarUsuario()">Entrar</button>
-                            <script type="text">
-               function validarUsuario(){
-                   if(senha == null){
-                       alert("Usuario incorreto!");
-                   }
-               }
-                            </script>
+                            <button type="submit" name="submit" class="btnn">Entrar</button>
+                            <!-- $2y$13$NY6M8WT39ScTcopTK5zfKeG4VWpKHIGdZ5kwwfpTjkZvooPdVTTYq-->
                     </form>
                 </div>
                 <p class="link">Acesso para administrador.</p>  

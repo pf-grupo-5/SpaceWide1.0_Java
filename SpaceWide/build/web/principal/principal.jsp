@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <link rel="stylesheet" href="../css/main.css"/>
+   
     <title>Space Wide</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -16,46 +19,34 @@
         }
     %>
 
-    <div class="menu-bar">
+  <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="../usuarioscontrolar.jsp?pag=1">Usuarios</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
 
-        <h1 class="logo" ><a href="principal.jsp">Space<span>Wide</span></a></h1>
-        <ul>
-
-            <li><a href="../escreveremail.jsp">Enviar Email Promocional<i class="fas fa-caret-down"></i></a>
-            <li><a href="#">Obra_artística<i class="fas fa-caret-down"></i></a>
-                    
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="../obrartisticacontrolar.jsp?pag=1">Gerenciar Obras</a></li>
-                        <li><a href="../obrarelatorio.jsp">Relatório das Obras</a></li>
-                    </ul>
-                </div>
-            <li><a href="#">Cliente<i class="fas fa-caret-down"></i></a>
-
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="../clientescontrolar.jsp?pag=1">Gerenciar Clientes</a></li>
-                        <li><a href="../clienterelatorio.jsp">Relatório de Clientes</a></li>
-                    </ul>
-                </div>
-            <li><a href="#">Artista<i class="fas fa-caret-down"></i></a>
-
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="../artistacontrolar.jsp?pag=1">Gerenciar Artistas</a></li>
-                        <li><a href="../artistarelatorio.jsp?pag=1">Relatório de Artistas</a></li>
-                    </ul>
-                </div>
-            <li><a><%=request.getSession().getAttribute("nome")%> <i class="fas fa-caret-down"></i></a>
-
-                <div class="dropdown-menu">
-                    <ul>
-
-                        <li><a href="../deslogar.jsp">Sair</a></li>
-
-                    </ul>
-                </div>
-        </ul>
+     
     </div>
 </body>
 

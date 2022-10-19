@@ -1,12 +1,23 @@
+<%@ page import="dao.Dao, dao.UsuarioDao"%>
+<jsp:useBean id="u" class="classes.Usuario"></jsp:useBean>
+<jsp:setProperty property="*" name="u"/>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%
+	//Lê dados da sessão
+	String acesso = (String) request.getSession().getAttribute("acesso");
+
+	//Se não há sessão, usuário não logou, retorna pcla o login
+	if (acesso == null) {
+		response.sendRedirect("../index.jsp");
+	}
+	%>
+	<%	
+		int i = UsuarioDao.excluirUsuario(u);
+		
+		if(i > 0) {
+			response.sendRedirect("../usuarioscontrolar.jsp?pag=1");
+			
+		}else{
+			response.sendRedirect("../artistabloquear-erro.jsp");
+		}
+	%>
