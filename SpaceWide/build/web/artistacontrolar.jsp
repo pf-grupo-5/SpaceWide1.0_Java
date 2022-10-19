@@ -69,6 +69,6 @@
 
                 <%@include file="rodape.jsp"%>
             </div>
-            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

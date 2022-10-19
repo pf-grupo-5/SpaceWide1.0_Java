@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"
-         import="dao.Dao, dao.ClienteDao, classes.Cliente, java.util.*"%>
+         import="dao.Dao, dao.UsuarioDao, classes.Usuario, java.util.*"%>
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--Import Google Icon Font-->
+      
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet"
-              href="../materialize/css/materialize.min.css" media="screen,projection" />
+        
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="./css/grafico.css">
-        <script src="./scripts/filtrar.js"></script>
+        <script src="./js/bootstrap.bundle.min.js"></script>
         <link href="./css/main.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
@@ -22,7 +21,7 @@
         <%@include file="menu.jsp"%>
         <%@include file="acesso.jsp"%>
 
-        <%                    int[] valores = ClienteDao.getRelatorioClientes();
+        <%                    int[] valores = UsuarioDao.getRelatorioUsuarios();
             request.setAttribute("valores", valores);
         %>
         <div class="container">
@@ -41,16 +40,16 @@
                         <canvas id="myChart"></canvas>
                         <h4>Relatório dos Clientes</h4>
                         <p>
-                            Ativo:
+                            Administrador:
                             <%=valores[0]%></p>
                         <p>
-                            Inativo:
+                            Artista:
                             <%=valores[1]%></p>
                         <p>
-                            Suspenso:
+                            Utentes:
                             <%=valores[2]%></p>
                         <p>
-                            Banido:
+                            
                             <%=valores[3]%></p>
                     </div>
                 </div>

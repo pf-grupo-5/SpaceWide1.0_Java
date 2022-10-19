@@ -32,7 +32,7 @@
                 <div class="grafico">
 
                     <canvas id="myChart"></canvas>
-                    <h4>Relatório dos Artistas</h4>
+                    <h4>Relatório dos usuarios</h4>
                     <p>
                         Administradores:
                         <%=valores[0]%></p>
@@ -84,6 +84,6 @@
             <div class="footer">
                 <%@include file="rodape.jsp"%>
             </div>
-            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

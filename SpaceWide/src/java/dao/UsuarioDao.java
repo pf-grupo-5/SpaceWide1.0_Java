@@ -202,8 +202,10 @@ public class UsuarioDao {
 
         if (usuario.getEstado().equals("ativo")) {
             statusdousuario = "inativo";
-        } else {
-            statusdousuario = "ativo";
+        } else if(usuario.getEstado().equals("inativo")){
+            statusdousuario = "suspenso";
+        }else{
+            statusdousuario = "banido";
         }
         try {
             Connection con = getConnection();

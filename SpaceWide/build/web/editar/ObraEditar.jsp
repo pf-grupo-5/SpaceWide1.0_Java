@@ -21,6 +21,6 @@
 			response.sendRedirect("../obrartisticacontrolar.jsp?pag=1");
 			
 		}else{
-			response.sendRedirect("../artistaeditar-erro.jsp");
+			response.sendRedirect("../obraeditar-erro.jsp");
 		}
 	%>

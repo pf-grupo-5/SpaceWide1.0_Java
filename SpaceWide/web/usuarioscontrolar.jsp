@@ -81,7 +81,10 @@
 
                         </tr>	
                     </c:forEach>
+                     
                 </tbody>
+                <button type="button" class="btn btn-dark"><a href="usuariosrelatoriopdf.jsp">Criar PDF</a></button>
+
             </table>
         </div>
         <div class="container footer">
@@ -91,6 +94,7 @@
                 <a class="active" href="usuarioscontrolar.jsp?pag=<%=i%>"><%=i%></a>
                 <% }%>   
             </div>  
+                
             <%@include file="rodape.jsp"%>
 
 
