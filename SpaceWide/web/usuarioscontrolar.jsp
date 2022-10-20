@@ -19,7 +19,8 @@
     </head>
     <body>    
         <%@include file="acesso.jsp"%> 
-
+        <header> <%@include file ="menu.jsp"%></header>
+       
 
 
         <%                String pag = request.getParameter("pag");
@@ -47,9 +48,8 @@
 
         %>
 
-        <h4 class="container-fluid">Relatório de Usuarios</h4>
-
-        <div class="table-responsive-md">
+        <h3 class="container">Tabela de Usuarios</h3>
+        <div class="container-lg-6 table-responsive-md">
             <table class="table align-middle">
                 <thead>
                     <tr><th  scope="col">Id</th>
@@ -57,6 +57,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Senha</th>
                         <th scope="col">Estado</th>
+                        <th scope="col">Acesso</th>
                         <th scope="col">Data de Criação</th>
                         <th scope="col">Data de ultima modificação</th>
                         <th scope="col">Ações:</th>
@@ -70,34 +71,35 @@
                             <td scope="row">${user.getEmail()}</td>            
                             <td scope="row">${user.getSenha()}</td>    
                             <td scope="row">${user.getEstado()}</td>
+                            <td scope="row">${user.getAcesso()}</td>
                             <td scope="row">${user.getData_de_criacao()}</td>
                             <td scope="row">${user.getData_da_ultima_modificacao()}</td>
                             <td scope="row">
 
                                 <a href="editar/Usuariobloquear.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle">lock</i></a>
                                 <a href="editar/Usuarioexcluir.jsp?id=${user.getId()}" onclick="return confirm('Deseja deletar?');"><i class="material-icons middle ">delete</i></a>
-                                <a href="editar/Usuarioeditarform.jsp?id=${user.getId()}"> <i class="material-icons middle">edit</i></a>
+                                <a href="javamail.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle" alt="Enviar Email Promocional">email</i></a>
                             </td>
 
                         </tr>	
                     </c:forEach>
-                     
+                   
                 </tbody>
-                <button type="button" class="btn btn-dark"><a href="usuariosrelatoriopdf.jsp">Criar PDF</a></button>
+                
 
             </table>
         </div>
-        <div class="container footer">
-
-            <div class="pagination">
+       <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
                 <% for (i = 1; i <= contagem; i++) {%>
-                <a class="active" href="usuarioscontrolar.jsp?pag=<%=i%>"><%=i%></a>
-                <% }%>   
-            </div>  
+                <li class="page-item">
+                <a class="page-link" href="usuarioscontrolar.jsp?pag=<%=i%>"><%=i%></a>
+                  </li>
+                  <%}%>
+            </ul></nav>
                 
             <%@include file="rodape.jsp"%>
 
 
-        </div>
     </body>
 </html>

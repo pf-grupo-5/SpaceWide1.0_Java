@@ -1,5 +1,9 @@
 
-<%@page import="classes.Cliente"%>
+<%@page import="jdk.internal.net.http.websocket.Transport"%>
+<%@page import="javax.websocket.Session"%>
+<%@page import="java.net.PasswordAuthentication"%>
+<%@page import="java.net.Authenticator"%>
+<%@page import="classes.Usuario"%>
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
@@ -27,33 +31,39 @@
 <sql:query dataSource = "${snapshot}" var = "result">
     SELECT * from utente;
 </sql:query>
-<table border = "1" width = "100%">
+    
+<table border = "1" width = "100%" class="table">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <thead>
     <tr>
-        <th>ID</th>
-        <th>Email</th>
-        <th>Status</th>
+        <th scope="column">ID</th>
+        <th scope="column">Email</th>
+        <th scope="column">Status</th>
+        <th scope="column"></th>
     </tr>
     <c:forEach var = "row" items = "${result.rows}">
         <tr>
-            <td> <c:out value = "${row.idCliente}"/></td>
-            <td> <c:out value = "${row.email}"/></td>
+            <td  scope="column"> <c:out value = "${row.idCliente}"/></td>
+            <td  scope="column"> <c:out value = "${row.email}"/></td>
             <td>Email enviado para os listados usuários</td>
         </tr>
+        </thead>
     </c:forEach>
 </table>
 
 
 <%
 
-    Cliente cliente = null;
+    Usuario user = null;
     try {
         Connection con = con = DriverManager.getConnection("jdbc:mysql://localhost:3306/site2023", "root", "");
         PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from utente");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
 
-            final String fromEmail = "spacewide1305@gmail.com"; //requires valid gmail id
-            final String password = "gaurdvatiuoednkf"; // correct password for gmail id
+            
 
             Authenticator auth = new Authenticator() {
                 //override the getPasswordAuthentication method
@@ -96,3 +106,10 @@
     }
 
 %>
+<!--//final String fromEmail = "spacewide1305@gmail.com"; //requires valid gmail id
+            final String password = "gaurdvatiuoednkf"; // correct password for gmail id
+             msg.setFrom(new InternetAddress("spacewide1305@gmail.com", "SpaceWide"));
+
+            msg.setReplyTo(InternetAddress.parse("spacewid1305@gmail.com", false));
+
+-->

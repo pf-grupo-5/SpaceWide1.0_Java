@@ -5,7 +5,7 @@
     <head>
 
         <title>Login</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.svg"/>   
+        <link rel="shortcut icon" type="image/x-icon" href="logo .svg"/>   
         <link rel="stylesheet" href="./css/login.css">
     </head>
     <body>
@@ -28,8 +28,8 @@
 
                     <form action="login.jsp" method="post"> 
                         <h2>Space<span>Wide</span></h2>
-                        <input type="email" name="email" max="75" placeholder="Email..." required>
-                        <input type="password" id="senha" name="senha" max="75" placeholder="Senha...">
+                        <input type="email" name="email" max="75" placeholder="Email" required>
+                        <input type="password" id="senha" name="senha" max="75" placeholder="Senha">
                         <div class="control-group">
 
                             <button type="submit" name="submit" class="btnn">Entrar</button>

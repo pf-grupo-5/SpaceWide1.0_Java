@@ -5,6 +5,7 @@ import static dao.Dao.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class UsuarioDao {
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setAcesso(rs.getString("acesso"));
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return usuario;
@@ -41,7 +42,7 @@ public class UsuarioDao {
             ps.setString(3, usuario.getAcesso());
             ps.setInt(4, usuario.getId());
             status = ps.executeUpdate();
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return status;
@@ -65,7 +66,7 @@ public class UsuarioDao {
                 usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return list;
@@ -81,6 +82,7 @@ public class UsuarioDao {
                 Usuario usuario = new Usuario();
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setNome_artistico(rs.getString("nome_artistico"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setAcesso(rs.getString("acesso"));
@@ -89,7 +91,7 @@ public class UsuarioDao {
                 usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return list;
@@ -113,7 +115,7 @@ public class UsuarioDao {
                 usuario.setData_da_ultima_modificacao(rs.getTimestamp("data_da_ultima_modificacao"));
                 list.add(usuario);
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return list;
@@ -133,7 +135,7 @@ public class UsuarioDao {
                 usuario.setAcesso(rs.getString("acesso"));
                 list.add(usuario);
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return list;
@@ -148,7 +150,7 @@ public class UsuarioDao {
             while (rs.next()) {
                 contagem = rs.getInt("contagem");
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return contagem;
@@ -177,7 +179,7 @@ public class UsuarioDao {
                 valores[2] = rs.getInt("utente");
             }
 
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return valores;
@@ -190,7 +192,7 @@ public class UsuarioDao {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement("DELETE FROM usuario WHERE id=?");
             ps.setInt(1, usuario.getId());
             status = ps.executeUpdate();
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return status;
@@ -200,12 +202,19 @@ public class UsuarioDao {
         int status = 0;
         String statusdousuario;
 
-        if (usuario.getEstado().equals("ativo")) {
-            statusdousuario = "inativo";
-        } else if(usuario.getEstado().equals("inativo")){
-            statusdousuario = "suspenso";
-        }else{
-            statusdousuario = "banido";
+        switch (usuario.getEstado()) {
+            case "ativo":
+                statusdousuario = "inativo";
+                break;
+            case "inativo":
+                statusdousuario = "suspenso";
+                break;
+            case "suspenso":
+                statusdousuario = "banido";
+                break;
+            default:
+                statusdousuario = "ativo";
+                break;
         }
         try {
             Connection con = getConnection();
@@ -213,7 +222,7 @@ public class UsuarioDao {
             ps.setString(1, statusdousuario);
             ps.setInt(2, usuario.getId());
             status = ps.executeUpdate();
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return status;
@@ -252,7 +261,7 @@ public class UsuarioDao {
                 //O acesso é inválido
                 usuario = null;
             }
-        } catch (Exception erro) {
+        } catch (SQLException erro) {
             System.out.println(erro);
         }
         return usuario;

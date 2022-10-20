@@ -11,7 +11,9 @@
         <link href="css/grafico.css" rel="stylesheet" type="text/css"/>
         <link href="css/menu.css" rel="stylesheet" type="text/css"/>
         <link href="css/padrao.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="js/bootstrap.bundle.min.js"></script>
         <!-- PDF II - Arquivo com o código para gerar PDF -->
         <script src="./scripts/pdf.js"></script>
         <title>Relatório de Usuários PDF</title>
@@ -41,7 +43,7 @@
 
             %>
         
-            <h1>Relatório de Usuários PDF</h1>
+            <h4>Relatório de Usuários PDF</h4>
             
             <table id="myTable">
             <tr><th>Id</th><th>Nome</th><th>Email</th><th>Acesso</th></tr>
@@ -59,7 +61,7 @@
     </div>
     <div>         
         <!-- PDF III - Botão que aciona a função getPDF() no arquivo pdf.js -->
-        <form><input type="button" value="Gerar PDF" onclick="getPDF()"></form>
+        <form><input class="btn btn-secondary justify-content-center" type="button" value="Gerar PDF" onclick="getPDF()"></form>
     </div>    
     <div class="footer">
         <%@include file="rodape.jsp"%>
