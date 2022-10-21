@@ -12,7 +12,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="js/bootstrap.bundle.min.js"></script>
 
 
         <title>Usuarios</title>
@@ -20,7 +19,7 @@
     <body>    
         <%@include file="acesso.jsp"%> 
         <header> <%@include file ="menu.jsp"%></header>
-       
+            <%@include file="modal.jsp"%>
 
 
         <%                String pag = request.getParameter("pag");
@@ -78,28 +77,29 @@
 
                                 <a href="editar/Usuariobloquear.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle">lock</i></a>
                                 <a href="editar/Usuarioexcluir.jsp?id=${user.getId()}" onclick="return confirm('Deseja deletar?');"><i class="material-icons middle ">delete</i></a>
-                                <a href="javamail.jsp?id=${user.getId()}&estado=${user.getEstado()}"> <i class="material-icons middle" alt="Enviar Email Promocional">email</i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i
+                                        class="material-icons middle" alt="Enviar Email Promocional">email</i></a>
                             </td>
 
                         </tr>	
                     </c:forEach>
-                   
+
                 </tbody>
-                
+
 
             </table>
         </div>
-       <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <% for (i = 1; i <= contagem; i++) {%>
                 <li class="page-item">
-                <a class="page-link" href="usuarioscontrolar.jsp?pag=<%=i%>"><%=i%></a>
-                  </li>
-                  <%}%>
+                    <a class="page-link" href="usuarioscontrolar.jsp?pag=<%=i%>"><%=i%></a>
+                </li>
+                <%}%>
             </ul></nav>
-                
-            <%@include file="rodape.jsp"%>
 
+        <%@include file="rodape.jsp"%>
 
+        <script src="js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

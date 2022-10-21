@@ -1,4 +1,3 @@
-
 <%@page import="jdk.internal.net.http.websocket.Transport"%>
 <%@page import="javax.websocket.Session"%>
 <%@page import="java.net.PasswordAuthentication"%>
@@ -18,6 +17,7 @@
 <%@ page import = "javax.mail.Authenticator.*" %>
 <%@ page import = "javax.mail.PasswordAuthentication.*" %>
 <%@ page import = "javax.mail.Authenticator .*" %>
+<%@ page import = "javax.mail.Transport.*" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.sql.Connection.*"%>
@@ -25,31 +25,25 @@
 <%@ page import="java.sql.ResultSet.*"%>
 <%@ page import="java.util.ArrayList.*"%>
 <%@ page import="java.util.List.*"%>
+
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-                   url = "jdbc:mysql://localhost:3306/site2023"
+                   url = "jdbc:mysql://localhost:3306/mail"
                    user = "root" password = ""/>
 <sql:query dataSource = "${snapshot}" var = "result">
-    SELECT * from utente;
+    SELECT * from cliente;
 </sql:query>
-    
-<table border = "1" width = "100%" class="table">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <thead>
+<table border = "1" width = "100%">
     <tr>
-        <th scope="column">ID</th>
-        <th scope="column">Email</th>
-        <th scope="column">Status</th>
-        <th scope="column"></th>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Status</th>
     </tr>
     <c:forEach var = "row" items = "${result.rows}">
         <tr>
-            <td  scope="column"> <c:out value = "${row.idCliente}"/></td>
-            <td  scope="column"> <c:out value = "${row.email}"/></td>
-            <td>Email enviado para os listados usuários</td>
+            <td> <c:out value = "${row.idCliente}"/></td>
+            <td> <c:out value = "${row.email}"/></td>
+            <td> Email enviado</td>
         </tr>
-        </thead>
     </c:forEach>
 </table>
 
@@ -58,19 +52,21 @@
 
     Usuario user = null;
     try {
-        Connection con = con = DriverManager.getConnection("jdbc:mysql://localhost:3306/site2023", "root", "");
-        PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from utente");
+        Connection con = con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mail", "root", "");
+        PreparedStatement ps = (PreparedStatement) con.prepareStatement("select * from usuario");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
 
-            
+            final String fromEmail = "spacewide1305@gmail.com";
+            final String password = "gaurdvatiuoednkf"; // correct password for gmail id
 
-            Authenticator auth = new Authenticator() {
-                //override the getPasswordAuthentication method
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            };
+           Authenticator auth = new Authenticator() {
+				//override the getPasswordAuthentication method
+                                @Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(fromEmail, password);
+				}
+		  };
 
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
@@ -94,11 +90,10 @@
 
             msg.setText(request.getParameter("comenta"), "UTF-8");
 
-        
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse((request.getParameter("email")), false));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse((rs.getString("email")), false));
             Transport.send(msg);
 
-            System.out.println("Email enviado.");
+            System.out.println("Email promocional enviado!!!");
         }
 
     } catch (Exception e) {
