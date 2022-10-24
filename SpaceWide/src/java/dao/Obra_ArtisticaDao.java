@@ -17,6 +17,8 @@ import classes.Obra_artistica;
 
 public class Obra_ArtisticaDao {
 
+
+	//Realiza a consulta de todas as obras artisticas
 	public static Obra_artistica getObra_artisticaById(int id) {
 		Obra_artistica obra = null;
 		try {
@@ -39,6 +41,7 @@ public class Obra_ArtisticaDao {
 		return obra;
 	}
 
+	//Lista todas as obras artisticas ordenando
 	public static List<Obra_artistica> getObra_artistica(int inicio, int total) {
 		List<Obra_artistica> list = new ArrayList<>();
 		try {
@@ -64,7 +67,7 @@ public class Obra_ArtisticaDao {
 		return list;
 	}
 
-
+	//Lista as obras artisticas para imprimir os relatórios
     public static List<Obra_artistica> relatorioObra() {
     List<Obra_artistica> list = new ArrayList<Obra_artistica>();
     try{
@@ -85,6 +88,8 @@ public class Obra_ArtisticaDao {
         return list;
            
     }
+	
+	//Realiza a contagem das obras
 	public static int getContagem() {
 		int contagem = 0;
 		try {
@@ -101,6 +106,7 @@ public class Obra_ArtisticaDao {
 		return contagem;
 	}
 
+	//Filtra o estado das obras 
 	public static int[] getRelatorioObra() {
 
 		int[] valores = { 0, 0, 0, 0 };
@@ -134,6 +140,7 @@ public class Obra_ArtisticaDao {
 		return valores;
 	}
 
+	//Bloqueia a obra alterando o seu acesso
 	public static int bloquearObra(Obra_artistica obra) {
 		int status = 0;
 		String estadoobra;
@@ -158,6 +165,8 @@ public class Obra_ArtisticaDao {
 		return status;
 	}
 
+
+	//Edita os dados da obra
 	public static int editarObra(Obra_artistica obra) {
 		int status = 0;
 		try {
@@ -174,6 +183,7 @@ public class Obra_ArtisticaDao {
 		return status;
 	}
 
+	
 	public static int excluirObra(Obra_artistica obra) {
 		int status = 0;
 		try {

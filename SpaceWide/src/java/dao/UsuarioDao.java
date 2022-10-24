@@ -11,6 +11,8 @@ import java.util.List;
 
 public class UsuarioDao {
 
+
+	//Seleciona os usuarios pelo id dele
     public static Usuario getUsuarioById(int id) {
         Usuario usuario = null;
         try {
@@ -31,23 +33,8 @@ public class UsuarioDao {
         }
         return usuario;
     }
-
-    public static int editarUsuario(Usuario usuario) {
-        int status = 0;
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement("UPDATE usuario SET nome=?, email=?, acesso=? WHERE id=?");
-            ps.setString(1, usuario.getNome());
-            ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getAcesso());
-            ps.setInt(4, usuario.getId());
-            status = ps.executeUpdate();
-        } catch (SQLException erro) {
-            System.out.println(erro);
-        }
-        return status;
-    }
-
+	
+    //Lista os Usuários para imprimir na tela
     public static List<Usuario> getUsuarios(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
@@ -71,7 +58,8 @@ public class UsuarioDao {
         }
         return list;
     }
-//$2y$13$NY6M8WT39ScTcopTK5zfKeG4VWpKHIGdZ5kwwfpTjkZvooPdVTTYq
+	
+	//Lista os Usuários que são artistas para imprimir na tela
     public static List<Usuario> getUsuariosArtistas(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
@@ -96,8 +84,8 @@ public class UsuarioDao {
         }
         return list;
     }
-
-    public static List<Usuario> getUsuariosClientes(int inicio, int total) {
+		//Lista os usuarios que são clientes para imprimir na tela
+		public static List<Usuario> getUsuariosClientes(int inicio, int total) {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
             Connection con = getConnection();
@@ -121,6 +109,7 @@ public class UsuarioDao {
         return list;
     }
 
+	//Seleciona os Usuarios para o relatório
     public static List<Usuario> getRelatorio() {
         List<Usuario> list = new ArrayList<Usuario>();
         try {
@@ -140,7 +129,7 @@ public class UsuarioDao {
         }
         return list;
     }
-
+	//Realiza a contagem dos usuarios para realizar a paginação
     public static int getContagem() {
         int contagem = 0;
         try {
@@ -156,6 +145,7 @@ public class UsuarioDao {
         return contagem;
     }
 
+	//Seleciona os usuarios pelo acesso para fazer o relatório
     public static int[] getRelatorioUsuarios() {
 
         int[] valores = {0, 0, 0};
@@ -197,7 +187,7 @@ public class UsuarioDao {
         }
         return status;
     }
-
+	//Bloqueia o usuario alterando o seu acesso
     public static int bloquearUsuario(Usuario usuario) {
         int status = 0;
         String statusdousuario;
@@ -227,7 +217,7 @@ public class UsuarioDao {
         }
         return status;
     }
-
+	//Realiza o login do usuario verificando o seus dados inseridos ná pagina de login
     public static Usuario logar(String email, String senha) {
         Usuario usuario = new Usuario();
         try {
